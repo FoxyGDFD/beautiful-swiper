@@ -16,7 +16,10 @@ export const TimelineCircle = ({ buttons }: TimelineCircleProps) => {
   useEffect(() => {
     if (currentIndex !== -1 && currentIndex !== prevIndexRef.current) {
       const angleStep = 360 / buttons.length;
-      const diff = currentIndex - prevIndexRef.current;
+      let diff = currentIndex - prevIndexRef.current;
+
+      if (diff > buttons.length / 2) diff -= buttons.length;
+      if (diff < -buttons.length / 2) diff += buttons.length;
 
       setRotation(prev => prev - diff * angleStep);
       prevIndexRef.current = currentIndex;
