@@ -1,0 +1,94 @@
+// Colors
+$black-blue_20: #42567a33;
+$black-blue_50: #42567a80;
+$black-blue: #42567a;
+$button-border: #303e58;
+$blue: #3877ee;
+
+$fucshia-50: #ef5da8;
+$fucshia-100: #ef5da8;
+
+// Neutral colors
+$white: #ffffff;
+$gray-50: #f4f5f9;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000000;
+
+// Typography
+$font-family-base: 'PT Sans', sans-serif;
+
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.25;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+// Spacing
+$spacer: 1rem;
+
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  4: $spacer,
+  6: $spacer * 1.5,
+  12: $spacer * 3,
+  20: $spacer * 5
+);
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+);
+
+// for @mixin linear-gradient
+$map-for-directions: (
+  top: to top,
+  top-right: to top right,
+  right: to right,
+  bottom-right: to bottom right,
+  bottom: to bottom,
+  bottom-left: to bottom left,
+  left: to left,
+  top-left: to top left,
+) !default;
+
+// Border radius
+$border-radius: 0.25rem;
+$border-radius-sm: 0.2rem;
+$border-radius-lg: 0.3rem;
+$border-radius-pill: 50rem;
+
+
+// Transitions
+$transition-base: all 0.2s ease-in-out;
+$transition-fade: opacity 0.15s linear;
+$transition-collapse: height 0.35s ease;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;

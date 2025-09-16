@@ -1,0 +1,56 @@
+@use "sass:map";
+@use 'mixins';
+@use "@shared/styles/variables";
+
+// Utility classes
+@mixin container {
+  width: 100%;
+  padding-right: map.get(variables.$spacers, 20);
+  padding-left: map.get(variables.$spacers, 20);
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include mixins.respond-to(sm) { max-width: 540px; }
+  @include mixins.respond-to(md) { max-width: 720px; }
+  @include mixins.respond-to(lg) { max-width: 960px; }
+  @include mixins.respond-to(xl) { max-width: 1140px; }
+  @include mixins.respond-to(xxl) { max-width: 1360px; }
+}
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+// Spacing utilities
+@each $size, $value in variables.$spacers {
+  .m-#{$size} { margin: $value; }
+  .mt-#{$size} { margin-top: $value; }
+  .mr-#{$size} { margin-right: $value; }
+  .mb-#{$size} { margin-bottom: $value; }
+  .ml-#{$size} { margin-left: $value; }
+  .mx-#{$size} { margin-left: $value; margin-right: $value; }
+  .my-#{$size} { margin-top: $value; margin-bottom: $value; }
+  
+  .p-#{$size} { padding: $value; }
+  .pt-#{$size} { padding-top: $value; }
+  .pr-#{$size} { padding-right: $value; }
+  .pb-#{$size} { padding-bottom: $value; }
+  .pl-#{$size} { padding-left: $value; }
+  .px-#{$size} { padding-left: $value; padding-right: $value; }
+  .py-#{$size} { padding-top: $value; padding-bottom: $value; }
+}
+
+// Accessibility
+.sr-only {
+  @include mixins.sr-only;
+}
+
+// Focus styles for keyboard navigation
+*:focus-visible {
+  @include mixins.focus-ring;
+}
