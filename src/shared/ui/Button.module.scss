@@ -1,0 +1,15 @@
+@use '@shared/styles/variables';
+
+.button {
+  border-radius: 100px;
+  // TODO: add to variables
+  color: #42567A;
+  // TODO: add to variables
+  border: 1px solid #42567A;
+  
+  padding: variables.$spacer calc(variables.$spacer + 1px);
+
+  &:hover {
+    color: variables.$blue;
+  }
+}

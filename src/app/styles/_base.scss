@@ -54,7 +54,6 @@ select {
   &:focus {
     outline: none;
     border-color: variables.$blue;
-    box-shadow: 0 0 0 0.2rem rgba(variables.$blue, 0.25);
   }
   
   &::placeholder {

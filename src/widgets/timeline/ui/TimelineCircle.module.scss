@@ -43,7 +43,6 @@
       translate(265px) 
       rotate(calc(-1 * var(--angle) - var(--rotation, 0deg))) 
       scale(1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     background: variables.$gray-50;
     z-index: 10;
   }

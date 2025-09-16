@@ -43,6 +43,8 @@
   .pl-#{$size} { padding-left: $value; }
   .px-#{$size} { padding-left: $value; padding-right: $value; }
   .py-#{$size} { padding-top: $value; padding-bottom: $value; }
+
+  .gap-#{$size} { gap: $value; }
 }
 
 // Accessibility
