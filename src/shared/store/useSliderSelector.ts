@@ -46,28 +46,33 @@ const sliderReducer = (
   switch (action.type) {
     case 'NEXT': {
       state.list.next();
-      return { ...state };
+      return { 
+        ...state,
+        currentIndex: state.list.currentIndex,
+        currentItem: state.list.current 
+      };
     }
 
     case 'PREV': {
       state.list.prev();
-      return { ...state };
+      return { 
+        ...state,
+        currentIndex: state.list.currentIndex,
+        currentItem: state.list.current 
+      };
     }
 
     case 'SET_CURRENT': {
       state.list.setCurrent(action.payload);
-      return { ...state };
+      return {
+        ...state,
+        currentIndex: state.list.currentIndex,
+        currentItem: state.list.current
+      };
     }
 
     case 'ADD_ITEM': {
       state.list.add(action.payload);
-      return { ...state };
-    }
-
-    case 'REMOVE_CURRENT': {
-      if (state.list.length > 0) {
-        state.list.removeCurrent();
-      }
       return { ...state };
     }
 

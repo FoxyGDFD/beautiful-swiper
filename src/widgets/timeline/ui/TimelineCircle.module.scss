@@ -11,13 +11,9 @@
   width: 530px;
   height: 530px;
   border-radius: 50%;
-  background: transparent;
-  backdrop-filter: blur(10px);
   border: 2px solid variables.$black-blue_20;
-
-  opacity: 0;
-  animation: fadeIn 0.5s ease forwards;
-
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+  @include mixins.flex-center;
 }
 
 .button {
@@ -29,46 +25,39 @@
   margin: -1.8rem;
   border: 1px solid variables.$button-border;
   border-radius: 30px;
-  background: variables.$gray-50;
+  background: variables.$black-blue;
   color: variables.$black-blue;
   font-size: 1.125rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 
-  // Используем CSS переменные из JS
   transform: 
     rotate(var(--angle)) 
     translate(265px) 
-    rotate(calc(-1 * var(--angle)))
+    rotate(calc(-1 * var(--angle) - var(--rotation, 0deg)))
     scale(0.1);
-  background: variables.$black-blue;
-  
-  opacity: 0;
-  animation: fadeIn 0.5s ease forwards;
-  animation-delay: calc(var(--index) * 0.1s);
-  
-  
-  &:hover {
+
+  &:hover, &:focus, &:active {
     transform: 
-    rotate(var(--angle)) 
+      rotate(var(--angle)) 
       translate(265px) 
-      rotate(calc(-1 * var(--angle))) 
+      rotate(calc(-1 * var(--angle) - var(--rotation, 0deg))) 
       scale(1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     background: variables.$gray-50;
     z-index: 10;
   }
-  
-  &:active {
+
+  &.active {
+    background: variables.$gray-50;
     transform: 
       rotate(var(--angle)) 
       translate(265px) 
-      rotate(calc(-1 * var(--angle))) 
-      scale(0.95);
-    }
-  
-    @include mixins.flex-center
+      rotate(calc(-1 * var(--angle) - var(--rotation, 0deg))) 
+      scale(1);
   }
+
+  @include mixins.flex-center;
+}
 
 @keyframes fadeIn {
   to {
@@ -76,7 +65,6 @@
   }
 }
 
-// Медиа-запросы для адаптивности1
 @include mixins.respond-to-max(lg) {
   .circle {
     width: 360px;
@@ -87,23 +75,23 @@
       transform: 
         rotate(var(--angle)) 
         translate(180px) 
-        rotate(calc(-1 * var(--angle)))
+        rotate(calc(-1 * var(--angle) - var(--rotation, 0deg)))
         scale(0.1);
       
-      &:hover {
+      &:hover, &:focus, &:active  {
         transform: 
           rotate(var(--angle)) 
           translate(180px) 
-          rotate(calc(-1 * var(--angle))) 
+          rotate(calc(-1 * var(--angle) - var(--rotation, 0deg)))
           scale(1);
       }
       
-      &:active {
+      &.active {
         transform: 
           rotate(var(--angle)) 
           translate(180px) 
-          rotate(calc(-1 * var(--angle))) 
-          scale(0.95);
+          rotate(calc(-1 * var(--angle) - var(--rotation, 0deg))) 
+          scale(1);
       }
     }
   }
