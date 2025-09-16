@@ -1,0 +1,32 @@
+@use 'sass:map';
+@use "@shared/styles/variables";
+@use '@shared/styles/utils';
+@use '@shared/styles/mixins';
+
+.page {
+  @include utils.container;
+  
+  height: 100vh;
+  border-left: .125rem solid variables.$black-blue_20;
+  border-right: .125rem solid variables.$black-blue_20;
+  
+  margin-right: 8.333vw; // 160px на 1920px экране
+  margin-left: 16.667vw; // 320px на 1920px экране
+  
+  max-inline-size: calc(100% - 24vw); // 8.333 + 16.667 = 25vw
+  
+  padding-top: 10.625rem;
+  padding-left: map.get(variables.$spacers, 20);
+  padding-right: map.get(variables.$spacers, 20);
+
+  @include mixins.respond-to-max(md) {
+    margin-right: auto;
+    margin-left: auto;
+
+    padding-left: 0;
+    padding-right: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+}

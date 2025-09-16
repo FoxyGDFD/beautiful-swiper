@@ -1,0 +1,116 @@
+@use "sass:map";
+@use '@shared/styles/mixins';
+@use "@shared/styles/variables";
+
+.container {
+  @include mixins.flex-center;
+}
+
+.circle {
+  position: relative;
+  width: 530px;
+  height: 530px;
+  border-radius: 50%;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border: 2px solid variables.$black-blue_20;
+
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3.625rem;
+  height: 3.625rem;
+  margin: -1.8rem;
+  border: 1px solid variables.$button-border;
+  border-radius: 30px;
+  background: variables.$gray-50;
+  color: variables.$black-blue;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  // Используем CSS переменные из JS
+  transform: 
+    rotate(var(--angle)) 
+    translate(265px) 
+    rotate(calc(-1 * var(--angle)))
+    scale(0.1);
+  background: variables.$black-blue;
+  
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--index) * 0.1s);
+  
+  
+  &:hover {
+    transform: 
+    rotate(var(--angle)) 
+      translate(265px) 
+      rotate(calc(-1 * var(--angle))) 
+      scale(1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: variables.$gray-50;
+    z-index: 10;
+  }
+  
+  &:active {
+    transform: 
+      rotate(var(--angle)) 
+      translate(265px) 
+      rotate(calc(-1 * var(--angle))) 
+      scale(0.95);
+    }
+  
+    @include mixins.flex-center
+  }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+// Медиа-запросы для адаптивности1
+@include mixins.respond-to-max(lg) {
+  .circle {
+    width: 360px;
+    height: 360px;
+    
+    .button {
+      
+      transform: 
+        rotate(var(--angle)) 
+        translate(180px) 
+        rotate(calc(-1 * var(--angle)))
+        scale(0.1);
+      
+      &:hover {
+        transform: 
+          rotate(var(--angle)) 
+          translate(180px) 
+          rotate(calc(-1 * var(--angle))) 
+          scale(1);
+      }
+      
+      &:active {
+        transform: 
+          rotate(var(--angle)) 
+          translate(180px) 
+          rotate(calc(-1 * var(--angle))) 
+          scale(0.95);
+      }
+    }
+  }
+}
+
+@include mixins.respond-to-max(md) {
+  .circle {
+    display: none;
+  }
+}

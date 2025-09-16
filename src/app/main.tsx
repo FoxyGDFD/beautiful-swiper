@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { MainPage } from '@pages'
+import './styles/global.scss'
 
 const root = document.getElementById('root');
 

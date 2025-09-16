@@ -1,0 +1,70 @@
+@use '@shared/styles/mixins';
+@use "@shared/styles/variables";
+
+
+// Base body styles
+body {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-base;
+  color: variables.$gray-900;
+  background-color: variables.$white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: variables.$font-weight-bold;
+  line-height: variables.$line-height-sm;
+  color: variables.$gray-900;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+// Links
+a {
+  color: variables.$blue;
+  transition: variables.$transition-base;
+  
+  // &:hover {
+  //   color: darken($blue, 15%);
+  // }
+  
+  &:focus {
+    @include mixins.focus-ring;
+  }
+}
+
+// Forms
+input,
+textarea,
+select {
+  width: 100%;
+  padding: variables.$spacer * 0.5;
+  border: 0.0625rem solid variables.$gray-300;
+  border-radius: variables.$border-radius;
+  transition: variables.$transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: variables.$blue;
+    box-shadow: 0 0 0 0.2rem rgba(variables.$blue, 0.25);
+  }
+  
+  &::placeholder {
+    color: variables.$gray-500;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: variables.$spacer * 0.25;
+  font-weight: variables.$font-weight-medium;
+  color: variables.$gray-700;
+}

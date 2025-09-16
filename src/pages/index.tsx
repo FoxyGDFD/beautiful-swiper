@@ -1,3 +1,8 @@
+import { Timeline } from "@widgets/timeline";
+import style from './Page.module.scss'
+
 export const MainPage = () => {
-  return <>123</>
+  return <div className={style.page}>
+      <Timeline />
+    </div>
 }
