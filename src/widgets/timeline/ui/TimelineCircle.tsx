@@ -1,12 +1,15 @@
+import { useSliderSelector, type SelectSliderButton } from '@shared/store/useSliderSelector';
 import styles from './TimelineCircle.module.scss'
 
 type TimelineCircleProps = {
-  buttons: {id: number | string}[];
+  buttons: SelectSliderButton[];
 }
 export const TimelineCircle = ({buttons}: TimelineCircleProps) => {
+  const {currentItem, dispatch} = useSliderSelector();
 
-    const handleButtonClick = (buttonId: number) => {
-    console.log(`Клик по кнопке: ${buttonId}`);
+  const handleButtonClick = (button: SelectSliderButton) => {
+    dispatch({type: 'SET_CURRENT', payload: button})
+    console.log(`Клик по кнопке: ${JSON.stringify(currentItem)}`);
   };
 
   return <div className={styles.container}>
@@ -21,7 +24,7 @@ export const TimelineCircle = ({buttons}: TimelineCircleProps) => {
                 '--angle': `${angle}deg`,
                 '--index': index 
               }}
-              onClick={() => handleButtonClick(button.id)}
+              onClick={() => handleButtonClick(button)}
               title={button.id.toString()}
             >
               {button.id}
