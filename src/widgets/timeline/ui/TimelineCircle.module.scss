@@ -28,6 +28,7 @@
   background: variables.$black-blue;
   color: variables.$black-blue;
   font-size: 1.125rem;
+  transition: transform .3s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: pointer;
 
   transform: 

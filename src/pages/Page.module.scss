@@ -29,4 +29,34 @@
     border-right: none;
   }
 
+  position: relative;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  &::before {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+  }
+  
+  &::after {
+    left: 0;
+    right: 0;
+    top: calc(50% - 46px);
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  @include mixins.respond-to-max(md) {
+    &::before, &::after { 
+      content: none;
+    }
+  }
 }
