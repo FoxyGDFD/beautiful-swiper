@@ -11,7 +11,7 @@
   margin-left: auto;
   
   @include mixins.respond-to(sm) { max-width: 540px; }
-  @include mixins.respond-to(md) { max-width: 720px; }
+  @include mixins.respond-to(md) { max-width: 720px;  }
   @include mixins.respond-to(lg) { max-width: 960px; }
   @include mixins.respond-to(xl) { max-width: 1140px; }
   @include mixins.respond-to(xxl) { max-width: 1360px; }

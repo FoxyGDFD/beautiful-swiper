@@ -1,6 +1,69 @@
-@use "sass:map";
-@use '@shared/styles/mixins';
+@use 'sass:map';
 @use "@shared/styles/variables";
+@use '@shared/styles/utils';
+@use '@shared/styles/mixins';
+
+.container {
+  @include utils.container;
+  
+  height: 100vh;
+  border-left: .125rem solid variables.$black-blue_20;
+  border-right: .125rem solid variables.$black-blue_20;
+  
+  margin-right: 8.333vw; // 160px на 1920px экране
+  margin-left: 16.667vw; // 320px на 1920px экране
+  
+  max-inline-size: calc(100% - 24vw);
+
+  padding-top: 10.625rem;
+  padding-left: map.get(variables.$spacers, 20);
+  padding-right: map.get(variables.$spacers, 20);
+
+  @include mixins.respond-to-max(md) {
+    max-inline-size: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 3.75rem;
+    padding-left: map.get(variables.$spacers, 2);
+    padding-right: map.get(variables.$spacers, 2);
+    border-left: none;
+    border-right: none;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  position: relative;
+  
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  &::before {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    transform: translateX(-50%);
+  }
+  
+  &::after {
+    left: 0;
+    right: 0;
+    top: calc(50% - 46px);
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  @include mixins.respond-to-max(md) {
+    &::before, &::after { 
+      content: none;
+    }
+  }
+}
 
 
 .title {
@@ -21,11 +84,28 @@
       $colors: variables.$blue variables.$fucshia-100
     )
   }
+  @include mixins.respond-to-max(md) {
+    font-size: 1.25rem;
+    line-height: 1.33rem;
+
+    padding-bottom: 3.5rem;
+
+    &::before {
+      content: none;
+    }
+  }
 }
 
 .counter { 
   color: variables.$black-blue;
   margin-bottom: 1.25rem;
+}
+
+
+.controls {
+  @include mixins.respond-to-max(md) {
+    order: 1000;
+  } 
 }
 
 .icon {

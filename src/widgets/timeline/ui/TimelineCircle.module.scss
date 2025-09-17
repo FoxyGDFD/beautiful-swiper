@@ -18,11 +18,39 @@
   gap: 5rem;
 
   @include mixins.flex-center;
+  
+  @include mixins.respond-to-max(lx) {
+    position: static;
+    transform: none;
+    gap: 2rem;
 
+    justify-content: space-between;
+  }
+
+  @include mixins.respond-to-max(md) {
+    position: static;
+    transform: none;
+    gap: 0.5rem;
+
+    justify-content: space-between;
+  }
+    
   .text {
     font-size: 200px;
     font-weight: variables.$font-weight-bold;
-  
+
+    @include mixins.respond-to-max(xl) {
+      font-size: 170px;
+    }
+    
+    @include mixins.respond-to-max(lg) {
+      font-size: 100px;
+    }
+
+    @include mixins.respond-to-max(md) {
+      font-size: 3.5rem;
+    }
+
     &.start {
       color: variables.$iris-100;
     }
@@ -30,6 +58,7 @@
     &.end {
       color: variables.$fucshia-100;
     }
+
   } 
 }
 

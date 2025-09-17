@@ -14,26 +14,22 @@ export interface TimelineEvent {
   description: string;
 }
 
-interface TimelineProps {
-  title?: string;
-  className?: string;
-}
 
 
-export const Timeline = ({ className }: TimelineProps) => {
+export const Timeline = () => {
   const { currentIndex, total, dispatch } = useSliderSelector();
   return (
-    <div className={clsx(className)}>
+    <div className={styles.container}>
       <h2 className={styles.title}>Исторические<br/> даты</h2>
 
       <TimelineCircle buttons={SELECT_SLIDER_BUTTONS}/>
-      <div>
+      <div className={styles.controls}>
         <p className={styles.counter}>{toTwoDigitString(currentIndex+1)}/{toTwoDigitString(total)}</p>
         <div className='d-flex gap-5'>
           <Button onClick={() => dispatch({ type: 'PREV'})}><ArrowBack className={styles.icon} /></Button>
           <Button onClick={() => dispatch({ type: 'NEXT'})}><ArrowForward className={styles.icon} /></Button>
         </div>
-        </div>
+      </div>
     </div>
   );
 };
