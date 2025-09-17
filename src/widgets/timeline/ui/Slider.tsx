@@ -4,15 +4,14 @@ import { Navigation, Controller } from 'swiper/modules';
 import type SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
-import ArrowBack from '../assets/arrow-left.svg?react'
-import ArrowForward from '../assets/arrow-right.svg?react'
+import ArrowBack from '../assets/arrow-left.svg?react';
+import ArrowForward from '../assets/arrow-right.svg?react';
 
 import styles from './Slider.module.scss';
 import clsx from 'clsx';
 import { Button } from '@shared/ui';
+import gsap from 'gsap';
 
 export interface TimelineEvent {
   title: number | string;
@@ -21,35 +20,48 @@ export interface TimelineEvent {
 
 interface TimelineSliderProps {
   events: TimelineEvent[];
-  activeIndex: number;
 }
 
-export const TimelineSlider = ({ events, activeIndex }: TimelineSliderProps) => {
+export const TimelineSlider = ({ events }: TimelineSliderProps) => {
   const swiperRef = useRef<SwiperCore | null>(null);
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (swiperRef.current && activeIndex !== swiperRef.current.activeIndex) {
-      swiperRef.current.slideTo(activeIndex);
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0);
     }
-  }, [activeIndex]);
 
+    if (wrapperRef.current) {
+
+      gsap.fromTo(
+        wrapperRef.current,
+        { a11utoAlpha: 0, y: 20, opacity: 0 },
+        {
+          opacity: 1,
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          ease: 'back.inOut',
+          stagger: 0.1,
+        }
+      );
+    }
+  }, [events]);
 
   return (
-    <div className={styles.sliderContainer}>
+    <div className={styles.sliderContainer} ref={wrapperRef}>
       <Button ref={prevRef} className={clsx(styles.controller, styles.prev)}>
-          <ArrowBack className={styles.icon} />
+        <ArrowBack className={styles.icon} />
       </Button>
       <Swiper
-        effect="fade"
         modules={[Navigation, Controller]}
         spaceBetween={30}
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
-
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setTimeout(() => {
@@ -62,18 +74,18 @@ export const TimelineSlider = ({ events, activeIndex }: TimelineSliderProps) => 
           });
         }}
         breakpoints={{
-            320: {
-              slidesPerView: 1.6,
-              spaceBetween: 25
-            },
-            1200: {
-              slidesPerView: 3,
-              spaceBetween: 40
-            },
-            1440: {
-              slidesPerView: 3,
-              spaceBetween: 80
-            }
+          320: {
+            slidesPerView: 1.6,
+            spaceBetween: 25,
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1440: {
+            slidesPerView: 3,
+            spaceBetween: 80,
+          },
         }}
         className={styles.swiper}
       >
@@ -87,7 +99,7 @@ export const TimelineSlider = ({ events, activeIndex }: TimelineSliderProps) => 
         ))}
       </Swiper>
       <Button ref={nextRef} className={clsx(styles.controller, styles.next)}>
-          <ArrowForward className={styles.icon} />
+        <ArrowForward className={styles.icon} />
       </Button>
     </div>
   );

@@ -93,7 +93,7 @@ export const Timeline = () => {
            <BulletNavigation buttons={SELECT_SLIDER_BUTTONS} className={styles.mobileController} />
         </div>
       </div>
-      <TimelineSlider events={timelines[currentIndex]} activeIndex={0}  />
+      <TimelineSlider events={timelines[currentIndex]}  />
     </div>
   );
 };
