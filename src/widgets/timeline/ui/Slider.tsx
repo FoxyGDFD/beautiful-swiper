@@ -65,7 +65,7 @@ export const TimelineSlider = ({ events }: TimelineSliderProps) => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setTimeout(() => {
-            if (swiper.params.navigation) {
+            if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
               swiper.params.navigation.prevEl = prevRef.current;
               swiper.params.navigation.nextEl = nextRef.current;
               swiper.navigation.init();
