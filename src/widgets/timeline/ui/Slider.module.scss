@@ -1,0 +1,95 @@
+@use "@shared/styles/variables";
+@use '@shared/styles/mixins';
+
+.sliderContainer {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 40px 1fr 40px;
+  gap: 1rem; 
+  
+  width: 100%;
+
+
+  @include mixins.respond-to(xl) {
+    gap: 5rem;
+  }
+
+  @include mixins.respond-to-max(md) {
+    border-top: 1px solid variables.$gray-400;
+  }
+}
+
+.swiper {
+  width: 100%;
+  
+  grid-column-start: 2;
+}
+
+.slide {
+  height: auto;
+  .card {
+    transition: all 0.3s ease;
+    
+    .title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: variables.$blue;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    
+    .description {
+      font-size: 1rem;
+      color: variables.$black-blue;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+
+  .controller {
+    height: 2.5rem;
+    width: 2.5rem;
+    background: variables.$white;
+    border: none;
+    box-shadow: 0 0 15px 0 #3877ee1a;
+    
+    &:disabled {
+      display: none;
+    }
+    
+    .icon {
+      stroke: variables.$blue;
+      height: 0.75rem;
+    }
+  }
+
+@include mixins.respond-to-max(md) {
+  .sliderContainer {
+    padding: 0 2rem;
+    order: 1;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+    
+  .title {
+    font-size: 1.125rem;
+  }
+}
+
+@include mixins.respond-to-max(sm) {
+  .sliderContainer {
+    padding: 0 1.5rem;
+  }
+  
+  .controller {
+    display: none;
+  }
+  
+  .swiper {
+    padding: 1rem 0;
+  }
+}

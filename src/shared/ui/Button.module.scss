@@ -1,4 +1,5 @@
 @use '@shared/styles/variables';
+@use '@shared/styles/mixins';
 
 .button {
   border-radius: 100px;
@@ -6,10 +7,7 @@
   color: #42567A;
   // TODO: add to variables
   border: 1px solid #42567A;
-  
-  padding: variables.$spacer calc(variables.$spacer + 1px);
 
-  &:hover {
-    color: variables.$blue;
-  }
+  @include mixins.flex-center
+
 }
