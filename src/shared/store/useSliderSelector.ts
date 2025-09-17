@@ -1,4 +1,3 @@
-// useSliderSelector.ts
 import { LinkedList } from "@shared/lib/data-structures/linked-list";
 import { createReactStore } from "@shared/lib/store";
 
@@ -13,19 +12,17 @@ export const SELECT_SLIDER_BUTTONS = [
   { id: 6 }
 ];
 
-// Базовое состояние
+const list = new LinkedList<SelectSliderButton>();
+
 const initialSliderState = (() =>  {
-  const list = new LinkedList<SelectSliderButton>();
   SELECT_SLIDER_BUTTONS.forEach(item => list.add(item));
   return {
-    list,
-    get currentIndex() { return this.list.currentIndex; },
-    get currentItem() { return this.list.current; },
-    get total() { return this.list.length; },
-    get items() { return this.list.toArray(); }
+    currentIndex:list.currentIndex,
+    currentItem:list.current ,
+    total:list.length ,
+    items:list.toArray()
   };
 })()
-
 
 type NumberSliderState = typeof initialSliderState;
 
@@ -45,35 +42,39 @@ const sliderReducer = (
 ): NumberSliderState => {
   switch (action.type) {
     case 'NEXT': {
-      state.list.next();
+      list.next();
       return { 
         ...state,
-        currentIndex: state.list.currentIndex,
-        currentItem: state.list.current 
+        currentIndex: list.currentIndex,
+        currentItem: list.current 
       };
     }
 
     case 'PREV': {
-      state.list.prev();
+      list.prev();
       return { 
         ...state,
-        currentIndex: state.list.currentIndex,
-        currentItem: state.list.current 
+        currentIndex: list.currentIndex,
+        currentItem: list.current 
       };
     }
 
     case 'SET_CURRENT': {
-      state.list.setCurrent(action.payload);
+      list.setCurrent(action.payload);
       return {
         ...state,
-        currentIndex: state.list.currentIndex,
-        currentItem: state.list.current
+        currentIndex: list.currentIndex,
+        currentItem: list.current
       };
     }
 
     case 'ADD_ITEM': {
-      state.list.add(action.payload);
-      return { ...state };
+      list.add(action.payload);
+      return { 
+        ...state, 
+        total: list.length,
+        items: list.toArray()
+       };
     }
 
     default:
