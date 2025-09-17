@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { useNumberAnimation } from '@shared/hooks/useNumberAnimation';
 
-type TimelineCircleProps = {
+export type TimelineCircleProps = {
   buttons: SelectSliderButton[];
 };
 
@@ -65,7 +65,7 @@ export const TimelineCircle = ({ buttons }: TimelineCircleProps) => {
           return (
             <button
               key={button.id}
-              className={clsx(styles.button, currentItem?.id === button.id && styles.active)}
+              className={clsx(styles.button, currentIndex === index && styles.active)}
               style={{
                 '--angle': `${angle}deg`,
                 '--index': index,

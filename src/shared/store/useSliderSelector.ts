@@ -3,13 +3,14 @@ import { createReactStore } from "@shared/lib/store";
 
 export type SelectSliderButton = {id: number, startYear: number, endYear: number };
 
+// TODO: move to some config
 export const SELECT_SLIDER_BUTTONS : SelectSliderButton[] = [
-  { id: 1, startYear: 1100, endYear: 1200 },
-  { id: 2, startYear: 1200, endYear: 1300 },
-  { id: 3, startYear: 1300, endYear: 1400 },
-  { id: 4, startYear: 1400, endYear: 1500 },
-  { id: 5, startYear: 1500, endYear: 1600 },
-  { id: 6, startYear: 1600, endYear: 1700 }
+  { id: 1, startYear: -3000, endYear: -500 },
+  { id: 2, startYear: -500, endYear: 500 },
+  { id: 3, startYear: 500, endYear: 1400 },
+  { id: 4, startYear: 1400, endYear: 1600 },
+  { id: 5, startYear: 1700, endYear: 1900 },
+  { id: 6, startYear: 1900, endYear: 2020 }
 ];
 
 const list = new LinkedList<SelectSliderButton>();

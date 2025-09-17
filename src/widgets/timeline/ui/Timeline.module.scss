@@ -110,22 +110,61 @@
   }
 }
 
-.counter { 
-  color: variables.$black-blue;
-  margin-bottom: 1.25rem;
-}
 
 
 .navigation {
+  margin-bottom: 3.125rem;
   @include mixins.respond-to-max(md) {
     order: 1000;
+    margin-bottom: 1rem;
   } 
 
-  .controller {
-    height: 3.125rem;
-    width: 3.125rem;
-    .icon {
-      height: 0.75rem;
+
+  .mobileController {
+    display: none;
+    @include mixins.respond-to-max(md) {
+      display: flex;
+      gap: 0.625rem;
+
+      justify-self: center;
+    } 
+  }
+
+  .counter { 
+    color: variables.$black-blue;
+    margin-bottom: 1.25rem;
+    
+    @include mixins.respond-to-max(sm) {
+      margin-bottom: 0.625rem;
+    }
+  }
+
+  .navigationElements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+    align-items: center;
+  }
+
+  .buttonContainer {
+    display: flex;
+    gap: 5rem;
+
+    @include mixins.respond-to-max(sm) {
+      gap: 0.5rem;
+    }
+
+    .controller {
+      height: 3.125rem;
+      width: 3.125rem;
+      .icon {
+        height: 0.75rem;
+      }
+      
+      @include mixins.respond-to-max(sm) {
+        height: 1.5625rem;
+        width: 1.5625rem;
+      }
     }
   }
 }
