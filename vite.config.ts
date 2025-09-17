@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), svgr({ include: '**/*.svg?react'})],
+    base: '/beautiful-swiper/',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
