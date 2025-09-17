@@ -1,11 +1,12 @@
-version: '3.9'
 services:
   app:
-    restart: always
     build:
       context: .
       target: development
+    env_file:
+      - ./.env
     volumes:
       - ./:/app
+      - /app/node_modules
     ports:
       - ${PORT}:${PORT}
