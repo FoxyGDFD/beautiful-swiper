@@ -19,15 +19,16 @@
 
   @include mixins.flex-center;
   
-  @include mixins.respond-to-max(lx) {
-    position: static;
-    transform: none;
+  @include mixins.respond-to-max(lg) {
     gap: 2rem;
+    margin-top: 100px;
+    top: 10vh;
 
     justify-content: space-between;
   }
 
   @include mixins.respond-to-max(md) {
+    margin-top: 56px;
     position: static;
     transform: none;
     gap: 0.5rem;
@@ -109,7 +110,7 @@
     background: variables.$gray-50;
     transform: 
       rotate(var(--angle)) 
-      translate(265px) 
+      translate(265px)
       rotate(calc(-1 * var(--angle) - var(--rotation, 0deg))) 
       scale(1);
   }

@@ -19,6 +19,11 @@
   padding-left: map.get(variables.$spacers, 20);
   padding-right: map.get(variables.$spacers, 20);
 
+  @include mixins.respond-to-max(lg) {
+      padding-left: map.get(variables.$spacers, 2);
+      padding-right: map.get(variables.$spacers, 2);
+    }
+
   @include mixins.respond-to-max(md) {
     max-inline-size: 100%;
     margin-right: auto;
@@ -84,6 +89,15 @@
       $colors: variables.$blue variables.$fucshia-100
     )
   }
+
+  @include mixins.respond-to-max(lg) {
+   
+    &::before {
+      content: none;
+      left:  0 - map.get(variables.$spacers, 2);
+    }
+  }
+
   @include mixins.respond-to-max(md) {
     font-size: 1.25rem;
     line-height: 1.33rem;
@@ -102,12 +116,16 @@
 }
 
 
-.controls {
+.navigation {
   @include mixins.respond-to-max(md) {
     order: 1000;
   } 
-}
 
-.icon {
-  height: 0.75rem;
+  .controller {
+    height: 3.125rem;
+    width: 3.125rem;
+    .icon {
+      height: 0.75rem;
+    }
+  }
 }
