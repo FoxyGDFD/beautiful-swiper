@@ -6,6 +6,8 @@ import TerserPlugin from 'terser-webpack-plugin';
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import 'dotenv/config';
+
 // ES modules equivalent of __dirname
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -99,7 +101,7 @@ export default {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist/'),
-    publicPath: '/beautiful-swiper/',
+    publicPath: '/beautiful-swiper',
     clean: true,
   },
 
