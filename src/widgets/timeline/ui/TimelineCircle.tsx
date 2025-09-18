@@ -1,5 +1,5 @@
 import { useSliderSelector, type SelectSliderButton } from '@shared/store/useSliderSelector';
-import styles from './TimelineCircle.module.scss'
+import * as styles from './TimelineCircle.module.scss'
 import { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { useNumberAnimation } from '@shared/hooks/useNumberAnimation';

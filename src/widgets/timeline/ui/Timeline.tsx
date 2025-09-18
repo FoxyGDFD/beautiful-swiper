@@ -1,4 +1,4 @@
-import styles from './Timeline.module.scss';
+import * as styles from './Timeline.module.scss';
 import { TimelineCircle } from './TimelineCircle';
 import { SELECT_SLIDER_BUTTONS, useSliderSelector } from '@shared/store/useSliderSelector';
 import { toTwoDigitString } from '../utils/to-two-digit-string';
