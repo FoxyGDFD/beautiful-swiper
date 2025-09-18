@@ -1,6 +1,6 @@
 import { useSliderSelector, type SelectSliderButton } from "@shared/store/useSliderSelector";
 import type { TimelineCircleProps } from "./TimelineCircle";
-import styles from './BulletNavigation.module.scss';
+import * as styles from './BulletNavigation.module.scss';
 import clsx from "clsx";
 
 

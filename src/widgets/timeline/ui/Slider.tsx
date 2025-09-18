@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import ArrowBack from '../assets/arrow-left.svg?react';
 import ArrowForward from '../assets/arrow-right.svg?react';
 
-import styles from './Slider.module.scss';
+import * as styles from './Slider.module.scss';
 import clsx from 'clsx';
 import { Button } from '@shared/ui';
 import gsap from 'gsap';
@@ -52,7 +52,7 @@ export const TimelineSlider = ({ events }: TimelineSliderProps) => {
 
   return (
     <div className={styles.sliderContainer} ref={wrapperRef}>
-      <Button ref={prevRef} className={clsx(styles.controller, styles.prev)}>
+      <Button ref={prevRef} className={clsx(styles.controller)}>
         <ArrowBack className={styles.icon} />
       </Button>
       <Swiper
@@ -98,7 +98,7 @@ export const TimelineSlider = ({ events }: TimelineSliderProps) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Button ref={nextRef} className={clsx(styles.controller, styles.next)}>
+      <Button ref={nextRef} className={clsx(styles.controller)}>
         <ArrowForward className={styles.icon} />
       </Button>
     </div>
