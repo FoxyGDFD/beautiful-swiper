@@ -98,8 +98,8 @@ export default {
 
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/', // TODO setup base path as /beautiful-swiper/
+    path: path.resolve(__dirname, 'dist/'),
+    publicPath: '/beautiful-swiper/',
     clean: true,
   },
 
@@ -146,7 +146,7 @@ export default {
     }),
     new CompressionPlugin({
       algorithm: 'gzip',
-      test: /\.(js|css|html|svg)$/,
+      test: /\.(ts|css|html|svg)$/,
       threshold: 8192,
     }),
   ],
