@@ -16,7 +16,7 @@ docker compose up
 ```
 
 ----
-## 2. With nodejs
+## 2. With node.js
 1. Install node.js and npm
 2. Installing dependencies. In project root run command:
 ```bash
