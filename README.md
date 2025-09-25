@@ -27,6 +27,6 @@ npm i
 npm run dev
 ```
 > If you need build artifact you should run command:
-> ```bash
+```bash
 npm run build
 ```
